@@ -51,7 +51,7 @@ func QueryHandler(ginCtx *gin.Context) {
 		ginCtx.JSON(http.StatusBadRequest, "bad request")
 	}
 
-	log.Infof("requestBody InsertHandler: %+v", reqBody)
+	log.Infof("requestBody QueryHandler: %+v", reqBody)
 
 	ctx := context.TODO()
 	ctx = context.WithValue(ctx, "logger", log)
