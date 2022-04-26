@@ -1,0 +1,38 @@
+version: '3.9'
+
+services:
+  maria-db:
+    image: mariadb
+    restart: on-failure
+    ports:
+      - 3306:3306
+    volumes:
+      - ${PWD}/mariadb:/var/lib/mysql
+    environment:
+      - MARIADB_ROOT_PASSWORD=secret
+      - MARIADB_PASSWORD=secret
+      - MARIADB_USER=test
+      - MARIADB_DATABASE=dct
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gin-server
+    depends_on:
+      - "maria-db"
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    expose:
+      - 8080
+    volumes:
+      - ./:/dct
+    environment:
+      PORT: "8080"
+      ENVIRONMENT: "prod"
+      GIN_MODE: "release"
+
+    
+    
+
