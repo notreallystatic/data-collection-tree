@@ -2,4 +2,4 @@
 
 ## install docker, docker-compose on your system
 ## run `docker-compose up`
-## Create a 'logs' directory in the root directory to save logs.
+## Create a 'logs' directory & 'mariadb' director. Logs for saving logs, & mariadb to save database files.
